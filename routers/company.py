@@ -1,12 +1,28 @@
 from fastapi import APIRouter
+from schemas.company import CompanyCreate, CompanyUpdate
 
-router = APIRouter(prefix="/company", tags=["Company"])
+router = APIRouter(prefix="/company", tags=["company"])
+companies = []
 
+@router.post("/")
+def create_company(company: CompanyCreate):
+    companies.append(company)
+    return companies
 
 @router.get("/")
-def read_company(): 
-    return {"Company": "This is the company endpoint."}
+def get_all_company():
+    return companies
 
 @router.get("/{company_id}")
 def read_company(company_id: int):
-    return {"Company ID": company_id}
+    return companies[company_id]
+
+@router.put("/{company_id}")
+def update_company(company_id: int, company: CompanyUpdate):
+    companies[company_id] = company
+    return companies
+
+@router.delete("/{company_id}")
+def delete_company(company_id: int):
+    companies.pop(company_id)
+    return companies
