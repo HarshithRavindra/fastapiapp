@@ -1,6 +1,14 @@
 from fastapi import FastAPI
-from routers import company,job
+from routers import company, job
+from database import Base, engine
+from models.company import Company
+from models.job import Job
+
 app=FastAPI()
+print("engine is :",engine)
+
+Base.metadata.create_all(bind=engine)
+
 app.include_router(company.router)
 app.include_router(job.router)
 
