@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Enum , ForeignKey
 from sqlalchemy.orm import relationship
 from database import Base
+
 
 class Company(Base):
     __tablename__ = "companies"

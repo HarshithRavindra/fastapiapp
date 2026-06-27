@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Enum, ForeignKey
 from sqlalchemy.orm import declarative_base,relationship
-from models.company import Company
+
 
 Base = declarative_base()
 
