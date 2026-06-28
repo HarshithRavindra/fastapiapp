@@ -1,6 +1,5 @@
-from typing import Optional
-
 from pydantic import BaseModel
+from typing import Optional
 
 class JobBase(BaseModel):
     title: str
@@ -10,7 +9,6 @@ class JobBase(BaseModel):
 
 class JobCreate(JobBase):
     pass
-
 
 class JobUpdate(JobBase):
     title: Optional[str] = None
@@ -24,6 +22,3 @@ class JobResponse(JobBase):
 
     class Config:
         from_attributes = True
-
-
-
