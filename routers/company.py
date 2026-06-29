@@ -1,5 +1,6 @@
 from os import name
 
+
 from fastapi import APIRouter, HTTPException, Depends, status
 from schemas.company import CompanyCreate, CompanyUpdate, CompanyResponse
 from models.company import Company
