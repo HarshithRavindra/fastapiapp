@@ -4,8 +4,8 @@ import CompanyCard from "./components/CompanyCard";
 import JobCard from "./components/JobCard";
 import Footer from "./components/Footer";
 import { useState, useEffect } from "react";
-import { getCompanies } from "../Services/CompanyService";
-import type {Company} from "../types/company";
+import { getCompanies } from "./Services/CompanyService";
+import type {Company} from "./types/company";
 
 function App(){
   const [loading,setLoading]=useState(true);
@@ -19,7 +19,7 @@ function App(){
       setCompanies(companies);
 
     }catch (error){
-      setError(error);
+      setError(error as Error);
     } finally{
       setLoading(false);
     }
@@ -42,8 +42,7 @@ function App(){
     <NavBar/>
     <Welcome/>
     <br/>
-    <CompanyCard key={companies.id}
-    companies={companies}/>
+    <CompanyCard companies={companies}/>
     <JobCard/>
     <Footer/>
     </>
